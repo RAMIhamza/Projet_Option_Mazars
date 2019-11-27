@@ -3,7 +3,7 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 import numpy as np
 
 def train_clustering(train_data,method='ward'):
-  Z = shc.linkage(train_data.drop(["Freq_sinistre"],axis=1,inplace=False), method=method)
+  Z = linkage(train_data.drop(["Freq_sinistre"],axis=1,inplace=False), method=method)
   clusters = fcluster(Z, 8.45, criterion='distance')
   train_data["clusters"]=clusters
   c=np.array(train_data["clusters"].unique())
