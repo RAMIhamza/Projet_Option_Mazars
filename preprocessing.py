@@ -1,7 +1,11 @@
+# DATA PREPROCESSING
+
 from sklearn.preprocessing import normalize
 import scipy.cluster.hierarchy as shc
 from sklearn.model_selection import train_test_split
 from scipy.cluster.hierarchy import fcluster
+import scipy.spatial.distance as sd
+
 import numpy as np
 def classe_age(x):
     if x == '<= 1 ans':
@@ -16,8 +20,11 @@ def classe_age(x):
         return 5
     elif x == '> 5 ans':
         return 6
+    
+    
 def franchise_(x):
     return int(x[0])
+
 
 def preprocessing(data, balance=True):
   if balance : 
@@ -39,3 +46,56 @@ def preprocessing(data, balance=True):
   data_scaled = pd.DataFrame(data_scaled, columns=data_clustering_d.columns)
   train_data,test_data = train_test_split(data_scaled,train_size=.5)
   return train_data,test_data
+
+
+def build_similarity_graph(X, var=0.01):
+    """
+    Computes the similarity matrix for a given dataset of samples.
+     
+    :param X: (n x m) matrix of m-dimensional samples
+    :param var: the sigma value for the exponential function, already squared
+    :return: W: (n x n) dimensional matrix representing the adjacency matrix of the graph
+    """
+
+    n = X.shape[0]
+
+    dists = sd.squareform(sd.pdist(X, "sqeuclidean"))
+    W = np.exp(-dists / var)
+
+    return W
+
+
+def compute_y_hat(Y, W):
+
+  """
+  Computes the estimated corrected value for eveyr frequency
+     
+  :param Y: observed frequency
+  :return: Y_hat
+           err : mean squared error
+  """
+  n=Y.shape[0]
+  vecteur_1 = np.array([1]*n).reshape(n,1)
+  Y_ = Y.reshape(1,n)
+  V = np.dot((vecteur_1), Y_)
+  R = np.transpose(V)-V
+
+  Y_hat =[]
+  for i in range(n):
+      y_hat = max(0,Y_[0,i] + np.dot(W[i,:], R[:,i]))
+      Y_hat.append(y_hat)
+  Y_hat=np.array(Y_hat)
+  err = np.sqrt(np.mean((Y-Y_hat)**2))
+
+  return Y_hat, err
+
+
+def count_zeros(Y_hat,thresh=10**(-10)):
+    """
+    Count the number of elements inferior to the threshold
+     
+    :param Y:  frequency
+    :return: proportion of values inferior to the threshold
+    """
+    count = np.sum(Y_hat<thresh)
+    return count/len(Y_hat)
