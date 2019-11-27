@@ -1,6 +1,7 @@
 import pandas as pd
 from scipy.cluster.hierarchy import dendrogram, linkage
 import numpy as np
+from scipy.cluster.hierarchy import fcluster
 
 def train_clustering(train_data,method='ward'):
   Z = linkage(train_data.drop(["Freq_sinistre"],axis=1,inplace=False), method=method)
