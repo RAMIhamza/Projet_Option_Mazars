@@ -26,26 +26,28 @@ def franchise_(x):
     return int(x[0])
 
 
-def preprocessing(data, balance=True):
-  if balance : 
-    data_non_nul=data[data.nombre_de_sinistre>0]
-    data_nul=data[data.nombre_de_sinistre==0]
-    data_nul_1,data_nul_2=train_test_split(data_nul,train_size=len(data_non_nul)/len(data_nul))
-    data_clustering=pd.concat([data_non_nul,data_nul_1])
-  else :
-    data_clustering = data
-  columns_conduc=["Classe_Age_Situ_Cont","Type_Apporteur","Activite"]
-  columns_contrat=["Mode_gestion","Zone","Fractionnement","franchise","FORMULE",'Exposition_au_risque']
-  columns_vehi=["Age_du_vehicule","ValeurPuissance","Freq_sinistre"]
-  data_clustering=data_clustering[columns_conduc+columns_contrat+columns_vehi]    
-  data_clustering["Classe_Age_Situ_Cont"]=data_clustering["Classe_Age_Situ_Cont"].apply(classe_age)
-  data_clustering["franchise"]=data_clustering["franchise"].apply(franchise_)
-  data_clustering_d=pd.get_dummies(data_clustering)
 
-  data_scaled = normalize(data_clustering_d)
-  data_scaled = pd.DataFrame(data_scaled, columns=data_clustering_d.columns)
-  train_data,test_data = train_test_split(data_scaled,train_size=.5)
-  return train_data,test_data
+def preprocessing(data, balance=True):
+    import pandas as pd
+    if balance : 
+      data_non_nul=data[data.nombre_de_sinistre>0]
+      data_nul=data[data.nombre_de_sinistre==0]
+      data_nul_1,data_nul_2=train_test_split(data_nul,train_size=len(data_non_nul)/len(data_nul))
+      data_clustering=pd.concat([data_non_nul,data_nul_1])
+    else :
+      data_clustering = data
+    columns_conduc=["Classe_Age_Situ_Cont","Type_Apporteur","Activite"]
+    columns_contrat=["Mode_gestion","Zone","Fractionnement","franchise","FORMULE",'Exposition_au_risque']
+    columns_vehi=["Age_du_vehicule","ValeurPuissance","Freq_sinistre"]
+    data_clustering=data_clustering[columns_conduc+columns_contrat+columns_vehi]    
+    data_clustering["Classe_Age_Situ_Cont"]=data_clustering["Classe_Age_Situ_Cont"].apply(classe_age)
+    data_clustering["franchise"]=data_clustering["franchise"].apply(franchise_)
+    data_clustering_d=pd.get_dummies(data_clustering)
+
+    data_scaled = normalize(data_clustering_d)
+    data_scaled = pd.DataFrame(data_scaled, columns=data_clustering_d.columns)
+    train_data,test_data = train_test_split(data_scaled,train_size=.5)
+    return train_data,test_data
 
 
 def build_similarity_graph(X, var=0.01):
