@@ -46,7 +46,10 @@ def preprocessing(data, balance=True, train_size=0.5):
 
     data_scaled = normalize(data_clustering_d)
     data_scaled = pd.DataFrame(data_scaled, columns=data_clustering_d.columns)
-    train_data,test_data = train_test_split(data_scaled,train_size=train_size)
+    if train_size < 1 :
+        train_data,test_data = train_test_split(data_scaled,train_size=train_size)
+    else :
+        train_data,test_data = data_scaled, None
     return train_data,test_data
 
 
