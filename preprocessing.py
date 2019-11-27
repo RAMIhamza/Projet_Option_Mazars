@@ -27,7 +27,7 @@ def franchise_(x):
 
 
 
-def preprocessing(data, balance=True):
+def preprocessing(data, balance=True, train_size=0.5):
     import pandas as pd
     if balance : 
       data_non_nul=data[data.nombre_de_sinistre>0]
@@ -46,7 +46,7 @@ def preprocessing(data, balance=True):
 
     data_scaled = normalize(data_clustering_d)
     data_scaled = pd.DataFrame(data_scaled, columns=data_clustering_d.columns)
-    train_data,test_data = train_test_split(data_scaled,train_size=.5)
+    train_data,test_data = train_test_split(data_scaled,train_size=train_size)
     return train_data,test_data
 
 
