@@ -3,9 +3,9 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 import numpy as np
 from scipy.cluster.hierarchy import fcluster
 
-def train_clustering(train_data,method='ward'):
+def train_clustering(train_data,method='ward',threshold=7.5):
   Z = linkage(train_data.drop(["Freq_sinistre"],axis=1,inplace=False), method=method)
-  clusters = fcluster(Z, 8.45, criterion='distance')
+  clusters = fcluster(Z, threshold, criterion='distance')
   train_data["clusters"]=clusters
   c=np.array(train_data["clusters"].unique())
   centroids = [ np.array(np.mean(train_data[train_data.clusters==i].drop(["Freq_sinistre","clusters"],axis=1,inplace=False))) for i in c ]
