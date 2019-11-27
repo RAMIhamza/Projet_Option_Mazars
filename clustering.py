@@ -21,7 +21,7 @@ def predict_clustering(test_data,centroids,clusters):
   test_data["clusters"]=predicted_clusters
   return test_data
   
-  def stabilite(train_data,test_data,mean_frequencies,std_frequencies,clusters):
+def stabilite(train_data,test_data,mean_frequencies,std_frequencies,clusters):
   stab = np.zeros((len(clusters),4))
   stab[:,2]=clusters.astype('int')
   stab[:,-1]=std_frequencies
