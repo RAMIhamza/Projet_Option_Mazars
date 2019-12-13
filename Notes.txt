@@ -1,0 +1,2 @@
+Réduction de dimension : regresser Y sur les colonnes et voir lesquelles ne sont pas utiles
+Adjusted r index : 
