@@ -42,7 +42,7 @@ def preprocessing(data, balance=True, train_size=0.5):
     data_clustering=data_clustering[columns_conduc+columns_contrat+columns_vehi]    
     data_clustering["Classe_Age_Situ_Cont"]=data_clustering["Classe_Age_Situ_Cont"].apply(classe_age)
     data_clustering["franchise"]=data_clustering["franchise"].apply(franchise_)
-    data_clustering[["Type_Apporteur","Activite","Zone","franchise","FORMULE","ValeurPuissance"]].astype('str')
+    data_clustering[["Type_Apporteur","Activite","Zone","franchise","FORMULE"]].astype('str')
     data_clustering_d=pd.get_dummies(data_clustering)
     data_scaled = normalize(data_clustering_d)
     data_scaled = pd.DataFrame(data_scaled, columns=data_clustering_d.columns)
