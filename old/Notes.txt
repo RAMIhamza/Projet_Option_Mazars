@@ -1,2 +1,18 @@
 Réduction de dimension : regresser Y sur les colonnes et voir lesquelles ne sont pas utiles
 Adjusted r index : 
+
+06/02/2020 :
+
+interface : Dash ou Django
+
+1) Interface simple avec les graphiques
+2) Pas parler de la partie ou on essaie de charger une table
+3) Choix des différentes méthodes : GMM, Kmeans
+4) Coté assureur : Entrer les valeurs pour les différents facteurs, puis renvoyer la prime, les modèles cachés (10 caracteristiques les plus importantes)
+5) pouvhoir charger une table dans l'interface
+
+
+Prime :
+pour le cout
+valeur negative : si on souscrit a des tout risques, on est indemnisé 
+refaire la meme chose que pour la frequence mais avec charge sinistre
