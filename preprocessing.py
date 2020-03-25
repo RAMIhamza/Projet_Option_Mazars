@@ -26,7 +26,6 @@ def franchise_(x):
     return int(x[0])
 
 
-
 def preprocessing(data, balance=True, train_size=0.5):
     import pandas as pd
     if balance : 
@@ -45,8 +44,11 @@ def preprocessing(data, balance=True, train_size=0.5):
     data_clustering.loc[:,"franchise"]=data_clustering["franchise"].apply(franchise_)
     data_clustering.loc[:,["Type_Apporteur","Activite","Zone","FORMULE"]] = data_clustering[["Type_Apporteur","Activite","Zone","FORMULE"]].astype('str')
     data_clustering_d=pd.get_dummies(data_clustering)
-    data_scaled = normalize(data_clustering_d)
+    # data_scaled = normalize(data_clustering_d, axis=0) # On ne normalise pas car on souhaite faire des predictions, et on ne peut pas garantire que les points de tests subiront la meme transformation que les points de train.
+    data_scaled = data_clustering_d
     data_scaled = pd.DataFrame(data_scaled, columns=data_clustering_d.columns)
+    # data_scaled["Freq_sinistre"] = data["Freq_sinistre"]
+
     if train_size < 1 :
         train_data,test_data = train_test_split(data_scaled,train_size=train_size)
     else :

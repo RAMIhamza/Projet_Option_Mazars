@@ -85,7 +85,7 @@ def main(path, path_sin, path_test, method):
     print("Test data loaded and preprocessed")
 
     for column in data_preprocessed.columns :
-        if column not in data_test.columns :
+        if column not in data_test_pre.columns :
             data_test_pre[column] = 0
     preds = estimator.predict(data_test_pre)
     data_test["cluster"]=preds
@@ -100,8 +100,8 @@ if __name__ == "__main__" :
     path_original = "./train_contrats.csv"
     path_sin = "./train_sinistres.csv"
     path_test = "./test_contrats.csv"
-    method = "kmeans" # gmm / kmeans
+    method = "gmm" # gmm / kmeans
 
-    # data_test_approx = main(path_approx, path_sin, path_test, method)
-    data_test_original = main(path_original, path_sin, path_test, method)
+    data_test_approx = main(path_approx, path_sin, path_test, method)
+    # data_test_original = main(path_original, path_sin, path_test, method)
 

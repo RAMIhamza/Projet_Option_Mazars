@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9962498e-aaed-4b9e-8103-3e8f2d5919af" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Approximation_de_Freq_sinistres.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Approximation_de_Freq_sinistres.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DimensionReduction.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/DimensionReduction.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GMM.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/GMM.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KMeans.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/KMeans.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/old/Notebook.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/old/Notebook.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/preprocessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_contrats_approx.csv" beforeDir="false" afterPath="$PROJECT_DIR$/train_contrats_approx.csv" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -111,21 +120,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/backend.py</url>
-          <line>59</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/backend.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
